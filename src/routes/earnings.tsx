@@ -101,6 +101,7 @@ function EarningsPage() {
                 stroke="var(--color-chart-1)"
                 strokeWidth={2.5}
                 fill="url(#earn)"
+                isAnimationActive={false}
               />
             </AreaChart>
           </ResponsiveContainer>
