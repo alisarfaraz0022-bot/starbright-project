@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as HiredRouteImport } from './routes/hired'
 import { Route as OpportunitiesRouteImport } from './routes/opportunities'
 import { Route as PipelineRouteImport } from './routes/pipeline'
 import { Route as StatusRouteImport } from './routes/status'
@@ -17,6 +18,11 @@ import { Route as StatusRouteImport } from './routes/status'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HiredRoute = HiredRouteImport.update({
+  id: '/hired',
+  path: '/hired',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OpportunitiesRoute = OpportunitiesRouteImport.update({
@@ -37,12 +43,14 @@ const StatusRoute = StatusRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/hired': typeof HiredRoute
   '/opportunities': typeof OpportunitiesRoute
   '/pipeline': typeof PipelineRoute
   '/status': typeof StatusRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/hired': typeof HiredRoute
   '/opportunities': typeof OpportunitiesRoute
   '/pipeline': typeof PipelineRoute
   '/status': typeof StatusRoute
@@ -50,20 +58,22 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/hired': typeof HiredRoute
   '/opportunities': typeof OpportunitiesRoute
   '/pipeline': typeof PipelineRoute
   '/status': typeof StatusRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/opportunities' | '/pipeline' | '/status'
+  fullPaths: '/' | '/hired' | '/opportunities' | '/pipeline' | '/status'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/opportunities' | '/pipeline' | '/status'
-  id: '__root__' | '/' | '/opportunities' | '/pipeline' | '/status'
+  to: '/' | '/hired' | '/opportunities' | '/pipeline' | '/status'
+  id: '__root__' | '/' | '/hired' | '/opportunities' | '/pipeline' | '/status'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  HiredRoute: typeof HiredRoute
   OpportunitiesRoute: typeof OpportunitiesRoute
   PipelineRoute: typeof PipelineRoute
   StatusRoute: typeof StatusRoute
@@ -76,6 +86,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hired': {
+      id: '/hired'
+      path: '/hired'
+      fullPath: '/hired'
+      preLoaderRoute: typeof HiredRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/opportunities': {
@@ -104,6 +121,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  HiredRoute: HiredRoute,
   OpportunitiesRoute: OpportunitiesRoute,
   PipelineRoute: PipelineRoute,
   StatusRoute: StatusRoute,
