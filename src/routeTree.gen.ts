@@ -16,6 +16,7 @@ import { Route as LinksRouteImport } from './routes/links'
 import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as OpportunitiesRouteImport } from './routes/opportunities'
 import { Route as PipelineRouteImport } from './routes/pipeline'
+import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as ScheduleRouteImport } from './routes/schedule'
 import { Route as StatusRouteImport } from './routes/status'
 import { Route as TermsRouteImport } from './routes/terms'
@@ -55,6 +56,11 @@ const PipelineRoute = PipelineRouteImport.update({
   path: '/pipeline',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ScheduleRoute = ScheduleRouteImport.update({
   id: '/schedule',
   path: '/schedule',
@@ -79,6 +85,7 @@ export interface FileRoutesByFullPath {
   '/notifications': typeof NotificationsRoute
   '/opportunities': typeof OpportunitiesRoute
   '/pipeline': typeof PipelineRoute
+  '/profile': typeof ProfileRoute
   '/schedule': typeof ScheduleRoute
   '/status': typeof StatusRoute
   '/terms': typeof TermsRoute
@@ -91,6 +98,7 @@ export interface FileRoutesByTo {
   '/notifications': typeof NotificationsRoute
   '/opportunities': typeof OpportunitiesRoute
   '/pipeline': typeof PipelineRoute
+  '/profile': typeof ProfileRoute
   '/schedule': typeof ScheduleRoute
   '/status': typeof StatusRoute
   '/terms': typeof TermsRoute
@@ -104,6 +112,7 @@ export interface FileRoutesById {
   '/notifications': typeof NotificationsRoute
   '/opportunities': typeof OpportunitiesRoute
   '/pipeline': typeof PipelineRoute
+  '/profile': typeof ProfileRoute
   '/schedule': typeof ScheduleRoute
   '/status': typeof StatusRoute
   '/terms': typeof TermsRoute
@@ -118,6 +127,7 @@ export interface FileRouteTypes {
     | '/notifications'
     | '/opportunities'
     | '/pipeline'
+    | '/profile'
     | '/schedule'
     | '/status'
     | '/terms'
@@ -130,6 +140,7 @@ export interface FileRouteTypes {
     | '/notifications'
     | '/opportunities'
     | '/pipeline'
+    | '/profile'
     | '/schedule'
     | '/status'
     | '/terms'
@@ -142,6 +153,7 @@ export interface FileRouteTypes {
     | '/notifications'
     | '/opportunities'
     | '/pipeline'
+    | '/profile'
     | '/schedule'
     | '/status'
     | '/terms'
@@ -155,6 +167,7 @@ export interface RootRouteChildren {
   NotificationsRoute: typeof NotificationsRoute
   OpportunitiesRoute: typeof OpportunitiesRoute
   PipelineRoute: typeof PipelineRoute
+  ProfileRoute: typeof ProfileRoute
   ScheduleRoute: typeof ScheduleRoute
   StatusRoute: typeof StatusRoute
   TermsRoute: typeof TermsRoute
@@ -211,6 +224,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PipelineRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/schedule': {
       id: '/schedule'
       path: '/schedule'
@@ -243,6 +263,7 @@ const rootRouteChildren: RootRouteChildren = {
   NotificationsRoute: NotificationsRoute,
   OpportunitiesRoute: OpportunitiesRoute,
   PipelineRoute: PipelineRoute,
+  ProfileRoute: ProfileRoute,
   ScheduleRoute: ScheduleRoute,
   StatusRoute: StatusRoute,
   TermsRoute: TermsRoute,
