@@ -53,7 +53,7 @@ function HomePage() {
   ).length;
   const monthly = hired.reduce((sum, h) => sum + h.fee, 0);
   const today = sessions.filter((s) => s.day === "Today");
-  const topMatch = tuitions[5];
+  const topMatch = tuitions[5]!;
   const unread = notifications.filter((n) => n.unread);
 
   return (
@@ -268,7 +268,7 @@ function StatTile({
   label,
   tone,
 }: {
-  to: string;
+  to: "/opportunities" | "/pipeline" | "/hired" | "/earnings";
   icon: React.ReactNode;
   value: string;
   label: string;
