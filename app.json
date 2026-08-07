@@ -1,0 +1,28 @@
+{
+  "expo": {
+    "name": "Keep Tutors",
+    "slug": "keep-tutors",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "keeptutors",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#5b1c46"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.keeptutors.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#5b1c46"
+      },
+      "package": "com.keeptutors.app"
+    },
+    "plugins": [
+      "expo-font"
+    ]
+  }
+}
