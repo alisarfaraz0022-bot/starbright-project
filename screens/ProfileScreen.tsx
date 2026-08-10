@@ -1,4 +1,4 @@
-import { View, Text, Pressable, TextInput, ScrollView } from "react-native";
+import { View, Text, TextInput, ScrollView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
